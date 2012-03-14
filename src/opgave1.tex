@@ -54,37 +54,8 @@ Det kan jeg benytte til, at finde værdien af \eqref{math2}:
 
 Det er kun det første led, der er relevant her. Ud fra dette kan jeg opskrive:
 \begin{equation*}
-	\text{Løkke1}\left(n\right) = O\left(n^2\right)
+	\text{Løkke1}\left(n\right) = \Theta\left(n^2\right)
 \end{equation*}
-
-Det gælder, da der findes en konstant $c$ således, at $c\ n^2$ før eller siden vil blive større end $\frac{1}{2}n^2 + \frac{1}{2}n$.
-Bestemmer konstanten $c$:
-\begin{equation*} \begin{split}
-	c\cdot n^2 > \frac{1}{2}n^2 + \frac{1}{2} &\quad\Rightarrow\quad c > \frac{\frac{1}{2}n^2}{n^2} + \frac{\frac{1}{2}n}{n^2}\\
-	                                          &\quad\Rightarrow\quad c > \frac{1}{2} + \frac{1}{2n}
-\end{split} \end{equation*}
-
-Jeg ser på et tilfælde, hvor $c\ n$ bliver større end $\frac{1}{2}n^2 + \frac{1}{2}n$ ved $n=1$:
-\begin{equation*}
-	c > \frac{1}{2} + \frac{1}{2\cdot 1} \quad\Rightarrow\quad c > 1
-\end{equation*}
-
-Efterprøver med $c=2$ ved $n=1$
-\begin{equation*}
-	2\cdot 1^2 > \frac{1}{2} + \frac{1}{2\cdot 1}
-\end{equation*}
-
-Jeg kan også opskrive følgende ud fra \eqref{math3}:
-\begin{equation*}
-	\text{Løkke1}\left(n\right) = \Omega\left(n^2\right)
-\end{equation*}
-
-Det gælder, da der findes en konstant $c$ således, at $c\ n^2$ før eller siden vil blive mindre end $\frac{1}{2}n^2 + \frac{1}{2}n$.
-Bestemmer konstanten $c$:
-\begin{equation*} \begin{split}
-	c\cdot n^2 < \frac{1}{2}n^2 + \frac{1}{2} &\quad\Rightarrow\quad c < \frac{\frac{1}{2}n^2}{n^2} + \frac{\frac{1}{2}n}{n^2}\\
-	                                          &\quad\Rightarrow\quad c < \frac{1}{2} + \frac{1}{2n}
-\end{split} \end{equation*}
 
 \subsection*{Algoritme 2}
 Jeg ser nu på følgende algoritme:
@@ -101,3 +72,31 @@ Jeg ser nu på følgende algoritme:
 		\EndWhile
 	\end{algorithmic}
 \end{algorithm}
+
+Man kunne i princippet lige så godt skrive linje 4 som $i = i + n$, da $i$ bliver forøget med 1 $n$ gange.\\
+
+Betingelsen for while-løkken på linje 2 bliver allerede brudt ved første iteration,
+da $i = i + n$ medfører, at $i = 1 + n$ (da $i = 1$ gælder ved løkkens start),
+hvilket selvfølgelig medfører, at $i > n$. Derved gælder $i < n$ ikke længere.\\
+
+Altså køres linje 1 og 6 kun én gang. Linje 4 køres $n$ gange. Det giver os:
+\begin{equation*}
+	\text{Løkke2}\left(n\right) = n + 3
+\end{equation*}
+
+Ud fra det kan jeg opskrive følgende:
+\begin{equation*}
+	\text{Løkke2}\left(n\right) = O(n)
+\end{equation*}
+
+Dette gælder, da der findes en konstant $c$ således, at $c\cdot n > n$ altid gælder. Denne konstant $c$
+kunne f.eks. være $2$.
+\begin{equation*}
+	\text{Løkke2}\left(n\right) = \Omega(n)
+\end{equation*}
+
+Dette gælder, da der findes en konstant $c$ således, at $c\cdot n < n$ altid gælder. Denne konstant $c$
+kunne f.eks. være $\frac{1}{2}$. Jeg kan nu konkludere følgende:
+\begin{equation*}
+	\text{Løkke2}\left(n\right) = \Theta(n)
+\end{equation*}
