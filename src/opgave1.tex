@@ -1,0 +1,103 @@
+\section*{Opgave 1}
+
+\subsection*{Algoritme 1}
+Jeg ser først på følgende algoritme:
+\begin{algorithm}
+	\caption{Løkke1($n$)}
+	\label{løkke1}
+	\begin{algorithmic}[1]
+		\For{$i=1$ to $n$}
+			\For{$j=1$ to $n+1-i$}
+				\State {\bf print} $i+j$
+			\EndFor
+		\EndFor
+	\end{algorithmic}
+\end{algorithm}
+
+Da linje 3 er den eneste linje, som ikke er en kontrolstruktur, er det den eneste jeg ser på.
+Jeg kan opskrive matematisk hvor mange gange linje 3 kører:
+\begin{equation}
+	\label{math1}
+	\sum_{i=1}^{n}\sum_{j=1}^{n+1-i}1
+\end{equation}
+
+Den ydre summering repræsenterer den ydre løkke og den indre summering den indre løkke.
+Vi ved, at følgende gælder:
+\begin{equation*}
+	\sum_{i=1}^{n}1 = n
+\end{equation*}
+
+Det kan jeg benytte til, at finde værdien af den indre summering:
+\begin{equation*}
+	\sum_{j=1}^{n+1-i}1 = n+1-i
+\end{equation*}
+
+Resultatet af det kan jeg da indsætte i \eqref{math1}:
+\begin{equation}
+	\label{math2}
+	\sum_{i=1}^{n} \left(n+1-i\right)
+\end{equation}
+
+Vi ved yderligere, at følgende gælder:
+\begin{equation*} \begin{split}
+	\sum_{i=1}^{n}i & = \frac{n(n+1)}{2}\\
+	\sum_{i=1}^{n}n & = n^2
+\end{split} \end{equation*}
+
+Det kan jeg benytte til, at finde værdien af \eqref{math2}:
+\begin{equation} \begin{split}
+	\label{math3}
+	\sum_{i=1}^{n} \left(n+1-i\right) & = n^2 + n - \frac{n(n+1)}{2}\\
+	                                  & = n^2 + n - \frac{1}{2}n^2 - \frac{1}{2}n\\
+	                                  & = \frac{1}{2}n^2 + \frac{1}{2}n
+\end{split} \end{equation}
+
+Det er kun det første led, der er relevant her. Ud fra dette kan jeg opskrive:
+\begin{equation*}
+	\text{Løkke1}\left(n\right) = O\left(n^2\right)
+\end{equation*}
+
+Det gælder, da der findes en konstant $c$ således, at $c\ n^2$ før eller siden vil blive større end $\frac{1}{2}n^2 + \frac{1}{2}n$.
+Bestemmer konstanten $c$:
+\begin{equation*} \begin{split}
+	c\cdot n^2 > \frac{1}{2}n^2 + \frac{1}{2} &\quad\Rightarrow\quad c > \frac{\frac{1}{2}n^2}{n^2} + \frac{\frac{1}{2}n}{n^2}\\
+	                                          &\quad\Rightarrow\quad c > \frac{1}{2} + \frac{1}{2n}
+\end{split} \end{equation*}
+
+Jeg ser på et tilfælde, hvor $c\ n$ bliver større end $\frac{1}{2}n^2 + \frac{1}{2}n$ ved $n=1$:
+\begin{equation*}
+	c > \frac{1}{2} + \frac{1}{2\cdot 1} \quad\Rightarrow\quad c > 1
+\end{equation*}
+
+Efterprøver med $c=2$ ved $n=1$
+\begin{equation*}
+	2\cdot 1^2 > \frac{1}{2} + \frac{1}{2\cdot 1}
+\end{equation*}
+
+Jeg kan også opskrive følgende ud fra \eqref{math3}:
+\begin{equation*}
+	\text{Løkke1}\left(n\right) = \Omega\left(n^2\right)
+\end{equation*}
+
+Det gælder, da der findes en konstant $c$ således, at $c\ n^2$ før eller siden vil blive mindre end $\frac{1}{2}n^2 + \frac{1}{2}n$.
+Bestemmer konstanten $c$:
+\begin{equation*} \begin{split}
+	c\cdot n^2 < \frac{1}{2}n^2 + \frac{1}{2} &\quad\Rightarrow\quad c < \frac{\frac{1}{2}n^2}{n^2} + \frac{\frac{1}{2}n}{n^2}\\
+	                                          &\quad\Rightarrow\quad c < \frac{1}{2} + \frac{1}{2n}
+\end{split} \end{equation*}
+
+\subsection*{Algoritme 2}
+Jeg ser nu på følgende algoritme:
+\begin{algorithm}
+	\caption{Løkke2($n$)}
+	\label{løkke2}
+	\begin{algorithmic}[1]
+		\State $i = 1$
+		\While{$i < n$}
+			\For{$j=1$ to $n$}
+				\State $i = i + 1$
+			\EndFor
+			\State $i = i\cdot 2$
+		\EndWhile
+	\end{algorithmic}
+\end{algorithm}

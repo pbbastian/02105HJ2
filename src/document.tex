@@ -1,0 +1,48 @@
+\documentclass[11pt,a4paper,danish]{article}
+\usepackage[utf8]{inputenc} % Skal passe til editorens indstillinger
+\usepackage[danish]{babel} % danske overskrifter
+\usepackage[T1]{fontenc} % fonte (output)
+\usepackage{lmodern} % vektor fonte
+\usepackage{graphicx} % indsættelse af billeder
+\usepackage{mathtools} % matematik - understøtter muligheden for at bruge \eqref{}
+\usepackage[plainpages=false,pdfpagelabels,pageanchor=false]{hyperref} % aktive links
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{pstool}
+\hypersetup{%
+  pdfauthor={Peter Bay Bastian},
+  pdftitle={Hjemmeopgave 1},
+  pdfsubject={02105 Algoritmer og Datastrukturer 1 F12}}
+\usepackage{memhfixc}% rettelser til hyperref
+\usepackage{colortbl}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{textcomp}
+\usepackage{SIunits}
+
+\setlength{\parindent}{0in} 
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\lstset{
+    language=matlab,
+    basicstyle=\ttfamily,
+    upquote=true,
+    aboveskip={1.5\baselineskip},
+    columns=fullflexible,
+    showstringspaces=false,
+    extendedchars=true,
+    breaklines=true,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    identifierstyle=\ttfamily,
+    keywordstyle=\color[rgb]{0,0,1},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{0.627,0.126,0.941},
+    numbers=left
+}
+
+\begin{document}
+	\include{forside}
+	\include{opgave1}
+\end{document}
